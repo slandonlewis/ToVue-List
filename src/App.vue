@@ -26,7 +26,7 @@ const addTodo = () => {
     content: input_content.value,
     category: input_category.value,
     done: false,
-    createdAt: new Date().getItem()
+    createdAt: new Date().toLocaleString()
   })
 }
 
