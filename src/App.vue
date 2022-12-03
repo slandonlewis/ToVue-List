@@ -28,6 +28,13 @@ const addTodo = () => {
     done: false,
     createdAt: new Date().toLocaleString()
   })
+
+  input_content.value = ''
+  input_category.value = null
+}
+
+const removeTodo = (todo) => {
+  todos.value = todos.value.filter(t => t !== todo)
 }
 
 /* When the state of "todos" changes, this sets that value in localStorage */
@@ -47,6 +54,7 @@ watch(name, (newValue) => {
    If not, it will simply be an empty string! */
 onMounted(() => {
   name.value = localStorage.getItem('name') || ''
+  todos.value = JSON.parse(localStorage.getItem('todos')) || []
 })
 </script>
 
@@ -92,6 +100,29 @@ the script tag, it looks like it isn't being treated exactly like my other comme
         <input type="submit" value="Add todo">
       </form>
     </section>
+
+    <section class="todo-list">
+      <h3>TO-DO LIST</h3>
+      <div class="list">
+        <div v-for="todo in todos_ascending" :class="`todo-item ${todo.done &&
+        'done'}`">
+          <label>
+            <input type="checkbox" v-model="todo.done" />
+            <span :class="`bubble ${todo.category}`"></span>
+            }"
+          </label>
+
+          <div class="todo-content">
+            <input type="text" v-model="todo.content" />
+          </div>
+
+          <div class="actions">
+            <button class="delete" @click="removeTodo(todo)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 </template>
 
