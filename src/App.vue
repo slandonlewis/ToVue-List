@@ -70,7 +70,7 @@ the script tag, it looks like it isn't being treated exactly like my other comme
   <main class="app">
     <section class="greeting">
       <h2>
-        Greetings, <input type="text" placeholder="Name goes here" v-model="name" />
+        Greetings, <input class="username" type="text" placeholder="Name goes here" v-model="name" />
       </h2>
     </section>
 
@@ -87,17 +87,17 @@ the script tag, it looks like it isn't being treated exactly like my other comme
           <label>
             <input type="radio" name="category" value="business" v-model="input_category">
             <span class="bubble business"></span>
-            <div>business</div>
+            <div>Business</div>
           </label>
 
           <label>
             <input type="radio" name="category" value="personal" v-model="input_category">
             <span class="bubble personal"></span>
-            <div>personal</div>
+            <div>Personal</div>
           </label>
         </div>
 
-        <input type="submit" value="Add todo">
+        <input type="submit" value="Add Item">
       </form>
     </section>
 
@@ -108,8 +108,7 @@ the script tag, it looks like it isn't being treated exactly like my other comme
         'done'}`">
           <label>
             <input type="checkbox" v-model="todo.done" />
-            <span :class="`bubble ${todo.category}`"></span>
-            }"
+            <span class="`bubble ${todo.category}`"></span>
           </label>
 
           <div class="todo-content">
